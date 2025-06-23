@@ -4,7 +4,7 @@
 
   <ul style="list-style: none">
     <li>
-      <h1>TODO list <a class="btn btn-primary" href="{% url 'catalog:task-create' %}">Add task</a></h1>
+      <h1>TODO list <a style="float: right;" class="btn btn-primary" href="{% url 'catalog:task-create' %}">Add task</a></h1>
     {% if task_list %}
       {% for task in task_list %}
         <div class="d-flex d-inline justify-content-between ">
@@ -20,7 +20,7 @@
               {% if task.done %}
                 <button class="btn btn-secondary" type="submit">Undo</button>
               {% else %}
-                <button class="btn btn-success" type="submit">Compleat</button>
+                <button class="btn btn-success" type="submit">Complete</button>
               {% endif %}
             </form>
           </div>
@@ -34,7 +34,7 @@
 
         <h4>
           Tags: {% for tag in task.tags.all %}
-                    {{ tag.title }}
+                    {{ tag.name }}
                 {% endfor %}
                 <a class="link-info" href="{% url 'catalog:task-update' pk=task.id %}">Update</a>
                 <a class="link-info" href="{% url 'catalog:task-delete' pk=task.id %}">Delete</a>

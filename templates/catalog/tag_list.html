@@ -3,8 +3,8 @@
 {% block content %}
   <h1>
     Tag List
-    <a href="{% url 'catalog:tag-create' %}" class="btn btn-primary link-to-page">
-      Create
+    <a href="{% url 'catalog:tag-create' %}" class="btn btn-primary link-to-page" style="float: right;">
+      Add
     </a>
   </h1>
   {% if tag_list %}
@@ -21,12 +21,12 @@
               {{ tag.name }}
           </td>
           <td>
-              <a href="{% url 'catalog:tag-update' pk=tag.id %}">
+              <a class="btn btn-secondary" href="{% url 'catalog:tag-update' pk=tag.id %}">
                 Update
               </a>
             </td>
             <td>
-              <a style="color: red"
+              <a class="btn btn-secondary"
                 href="{% url 'catalog:tag-delete' pk=tag.id %}">
                 Delete
               </a>
