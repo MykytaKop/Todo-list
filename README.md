@@ -1,5 +1,10 @@
 # Todo-list
 
+## Home page:
+![Home page](static/img/Home.png)
+
+## Tad list page:
+![Tag list](static/img/TagPage.png)
 ## Installation:
 
 ## 1.Clone the repository:
