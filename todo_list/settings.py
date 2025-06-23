@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "bootstrap4",
+    "crispy_bootstrap5",
+    "crispy_forms",
     'catalog',
 ]
 
@@ -68,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 WSGI_APPLICATION = 'todo_list.wsgi.application'
 
@@ -128,3 +130,7 @@ STATICFILES_DIRS = [
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

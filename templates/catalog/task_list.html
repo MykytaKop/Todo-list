@@ -1,25 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
   <ul style="list-style: none">
     <li>
-      <h1>TODO list <a class="btn btn-primary" href="#">Add task</a></h1>
+      <h1>TODO list <a class="btn btn-primary" href="{% url 'catalog:task-create' %}">Add task</a></h1>
+    {% if task_list %}
       {% for task in task_list %}
-        <strong>{{ task.content }}</strong>
-        {% if task.done == True %}
-        <strong style="color: green">Done</strong>
-        {% else %}
-        <strong style="color: red">Not done</strong>
-        {% endif %}
-
-        <form method="post" action="{% url 'catalog:toggle-completing-task' pk=task.id %}">
-          {% csrf_token %}
-          {% if task.done %}
-            <button class="btn btn-secondary" type="submit">Undo</button>
-          {% else %}
-            <button class="btn btn-success" type="submit">Compleat</button>
-          {% endif %}
-        </form>
+        <div class="d-flex d-inline justify-content-between ">
+            <h4>{{ task.content }}
+              {% if task.done %}
+                <span class="text-success"> Done</span>
+              {% else %}
+                <span class="text-danger"> Not done</span>
+              {% endif %}
+            </h4>
+            <form method="post" action="{% url 'catalog:toggle-completing-task' pk=task.id %}">
+              {% csrf_token %}
+              {% if task.done %}
+                <button class="btn btn-secondary" type="submit">Undo</button>
+              {% else %}
+                <button class="btn btn-success" type="submit">Compleat</button>
+              {% endif %}
+            </form>
+          </div>
 
         <p>
           Created: {{ task.created_time }}
@@ -32,8 +36,14 @@
           Tags: {% for tag in task.tags.all %}
                     {{ tag.title }}
                 {% endfor %}
+                <a class="link-info" href="{% url 'catalog:task-update' pk=task.id %}">Update</a>
+                <a class="link-info" href="{% url 'catalog:task-delete' pk=task.id %}">Delete</a>
         </h4>
+        <hr>
       {% endfor %}
+    {% else %}
+      <h3>No tasks yet</h3>
+    {% endif %}
     </li>
   </ul>
 {% endblock %}
