@@ -1,3 +1,27 @@
-from django.shortcuts import render
+from msilib.schema import ListView
 
-# Create your views here.
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views import generic
+
+from catalog.models import Task
+
+
+class TaskListView(generic.ListView):
+    model = Task
+    template_name = 'catalog/task_list.html'
+
+
+class ToggleTaskStatusView(generic.View):
+
+    def post(self, request, pk):
+        task = get_object_or_404(Task, pk=pk)
+        if task.done:
+            task.done = False
+        else:
+            task.done = True
+
+        task.save()
+        return redirect(reverse_lazy("catalog:home"))
+

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul style="list-style: none">
+    <li>
+      <h1>TODO list <a class="btn btn-primary" href="#">Add task</a></h1>
+      {% for task in task_list %}
+        <strong>{{ task.content }}</strong>
+        {% if task.done == True %}
+        <strong style="color: green">Done</strong>
+        {% else %}
+        <strong style="color: red">Not done</strong>
+        {% endif %}
+
+        <form method="post" action="{% url 'catalog:toggle-completing-task' pk=task.id %}">
+          {% csrf_token %}
+          {% if task.done %}
+            <button class="btn btn-secondary" type="submit">Undo</button>
+          {% else %}
+            <button class="btn btn-success" type="submit">Compleat</button>
+          {% endif %}
+        </form>
+
+        <p>
+          Created: {{ task.created_time }}
+        </p>
+        {% if task.optional_deadline %}
+          <p>Deadline: {{ task.optional_deadline }}</p>
+        {% endif %}
+
+        <h4>
+          Tags: {% for tag in task.tags.all %}
+                    {{ tag.title }}
+                {% endfor %}
+        </h4>
+      {% endfor %}
+    </li>
+  </ul>
+{% endblock %}
