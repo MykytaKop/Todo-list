@@ -5,7 +5,10 @@ from .views import (
     TaskCreateView,
     TaskUpdateView,
     TaskDeleteView,
-    TagListView
+    TagListView,
+    TagCreateView,
+    TagUpdateView,
+    TagDeleteView
 
 )
 
@@ -23,4 +26,7 @@ urlpatterns = [
         name="toggle-completing-task",
     ),
     path('tag/', TagListView.as_view(), name='tag-list'),
+    path('tag/create', TagCreateView.as_view(), name='tag-create'),
+    path('tag/<int:pk>/update', TagUpdateView.as_view(), name='tag-update'),
+    path('tag/<int:pk>/delete', TagDeleteView.as_view(), name='tag-delete'),
 ]

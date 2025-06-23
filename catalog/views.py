@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from catalog.forms import TaskForm
+from catalog.forms import TaskForm, TagForm
 from catalog.models import Task, Tag
 
 
@@ -48,5 +48,20 @@ class TaskDeleteView(generic.DeleteView):
 class TagListView(generic.ListView):
     model = Tag
 
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    form_class = TagForm
+    success_url = reverse_lazy("catalog:tag-list")
+
+class TagUpdateView(generic.UpdateView):
+    model = Tag
+    form_class = TagForm
+    success_url = reverse_lazy("catalog:tag-list")
+
+
+class TagDeleteView(generic.DeleteView):
+    model = Tag
+    success_url = reverse_lazy("catalog:tag-list")
 
 
