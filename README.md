@@ -4,7 +4,7 @@
 
 ## 1.Clone the repository:
 
-  ```https://github.com/MykytaKop/Kitchen-in-a-restaurant.git```
+  ```git clone https://github.com/MykytaKop/Todo-list.git```
 ## 2.Create a virtual environment and activate it:
 
  ```python -m venv .venv``` ```.venv\Scripts\activate (on Windows)``` ```source .venv/bin/activate (on macOS) ```
