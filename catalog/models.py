@@ -2,10 +2,10 @@ from django.db import models
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True)
 
     def __str__(self) -> str:
-        return self.title
+        return self.name
 
 
 class Task(models.Model):

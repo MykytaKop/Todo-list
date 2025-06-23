@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from catalog.forms import TaskForm
-from catalog.models import Task
+from catalog.models import Task, Tag
 
 
 class TaskListView(generic.ListView):
@@ -43,5 +43,10 @@ class TaskUpdateView(generic.UpdateView):
 class TaskDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy("catalog:home")
+
+
+class TagListView(generic.ListView):
+    model = Tag
+
 
 

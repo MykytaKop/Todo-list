@@ -4,7 +4,9 @@ from .views import (
     ToggleTaskStatusView,
     TaskCreateView,
     TaskUpdateView,
-    TaskDeleteView
+    TaskDeleteView,
+    TagListView
+
 )
 
 app_name = 'catalog'
@@ -20,4 +22,5 @@ urlpatterns = [
         ToggleTaskStatusView.as_view(),
         name="toggle-completing-task",
     ),
+    path('tag/', TagListView.as_view(), name='tag-list'),
 ]
