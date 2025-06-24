@@ -3,7 +3,7 @@
 {% block content %}
   <h1>
     Tag List
-    <a href="{% url 'catalog:tag-create' %}" class="btn btn-primary link-to-page" style="float: right;">
+    <a href="{% url 'todo_list_app:tag-create' %}" class="btn btn-primary link-to-page" style="float: right;">
       Add
     </a>
   </h1>
@@ -21,13 +21,13 @@
               {{ tag.name }}
           </td>
           <td>
-              <a class="btn btn-secondary" href="{% url 'catalog:tag-update' pk=tag.id %}">
+              <a class="btn btn-secondary" href="{% url 'todo_list_app:tag-update' pk=tag.id %}">
                 Update
               </a>
             </td>
             <td>
               <a class="btn btn-secondary"
-                href="{% url 'catalog:tag-delete' pk=tag.id %}">
+                href="{% url 'todo_list_app:tag-delete' pk=tag.id %}">
                 Delete
               </a>
             </td>
