@@ -12,7 +12,7 @@ from .views import (
 
 )
 
-app_name = 'catalog'
+app_name = 'todo_list_app'
 
 urlpatterns = [
     path('', TaskListView.as_view(), name='home'),
@@ -26,7 +26,7 @@ urlpatterns = [
         name="toggle-completing-task",
     ),
     path('tag/', TagListView.as_view(), name='tag-list'),
-    path('tag/create', TagCreateView.as_view(), name='tag-create'),
-    path('tag/<int:pk>/update', TagUpdateView.as_view(), name='tag-update'),
-    path('tag/<int:pk>/delete', TagDeleteView.as_view(), name='tag-delete'),
+    path('tag/create/', TagCreateView.as_view(), name='tag-create'),
+    path('tag/<int:pk>/update/', TagUpdateView.as_view(), name='tag-update'),
+    path('tag/<int:pk>/delete/', TagDeleteView.as_view(), name='tag-delete'),
 ]

@@ -4,7 +4,7 @@
 
   <ul style="list-style: none">
     <li>
-      <h1>TODO list <a style="float: right;" class="btn btn-primary" href="{% url 'catalog:task-create' %}">Add task</a></h1>
+      <h1>TODO list <a style="float: right;" class="btn btn-primary" href="{% url 'todo_list_app:task-create' %}">Add task</a></h1>
     {% if task_list %}
       {% for task in task_list %}
         <div class="d-flex d-inline justify-content-between ">
@@ -15,7 +15,7 @@
                 <span class="text-danger"> Not done</span>
               {% endif %}
             </h4>
-            <form method="post" action="{% url 'catalog:toggle-completing-task' pk=task.id %}">
+            <form method="post" action="{% url 'todo_list_app:toggle-completing-task' pk=task.id %}">
               {% csrf_token %}
               {% if task.done %}
                 <button class="btn btn-secondary" type="submit">Undo</button>
@@ -28,16 +28,16 @@
         <p>
           Created: {{ task.created_time }}
         </p>
-        {% if task.optional_deadline %}
-          <p>Deadline: {{ task.optional_deadline }}</p>
+        {% if task.deadline %}
+          <p>Deadline: {{ task.deadline }}</p>
         {% endif %}
 
         <h4>
           Tags: {% for tag in task.tags.all %}
                     {{ tag.name }}
                 {% endfor %}
-                <a class="link-info" href="{% url 'catalog:task-update' pk=task.id %}">Update</a>
-                <a class="link-info" href="{% url 'catalog:task-delete' pk=task.id %}">Delete</a>
+                <a class="link-info" href="{% url 'todo_list_app:task-update' pk=task.id %}">Update</a>
+                <a class="link-info" href="{% url 'todo_list_app:task-delete' pk=task.id %}">Delete</a>
         </h4>
         <hr>
       {% endfor %}
